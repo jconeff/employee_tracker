@@ -1,0 +1,22 @@
+
+
+CREATE TABLE department (
+  id INTEGER PRIMARY KEY,
+  name VARCHAR(30) NOT NULL
+);
+
+
+CREATE TABLE roles (
+  id INTEGER PRIMARY KEY, 
+  title VARCHAR(30) NOT NULL,
+  salary DECIMAL NOT NULL,
+department_id INTEGER UNSIGNED REFERENCES departments(id) ON DELETE CASCADE
+);
+
+CREATE TABLE employee (
+    id INTEGER NOT NULL PRIMARY KEY,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    roles_id INTEGER REFERENCES roles(id) ON DELETE CASCADE,
+    manager_id INTEGER UNSIGNED  REFERENCES employees(id) ON DELETE SET NULL
+);
