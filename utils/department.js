@@ -1,4 +1,4 @@
-const { connection, dbQuery } = require('./index.js')
+
 
 const getDept = () =>  {
     const sql = `SELECT department.name AS Departments from department`

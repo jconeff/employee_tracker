@@ -1,10 +1,10 @@
-const inquirer = require('inquirer');
+
 const questions = require('./lib/questions');
 
 const promptUser = () => {
     inquirer.prompt(questions)
         .then(res => {
-            switch (res.initialPrompt) {
+            switch (res.prompt) {
                 case 'View All Employees':
                     getEmployees();
                     break;

@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
-const { connection, dbQuery } = require('./index.js')
-const deptArr = [];
+
+
 
 const getRole = () =>  {
     const sql = `SELECT roles.title AS Roles from roles`
@@ -9,7 +9,7 @@ const getRole = () =>  {
 };
 
 const addRole = () => {
-    // gets all possible departments
+  
     connection.query(`SELECT * from department`, (err, res) => {
         if (err) {
             throw err;
@@ -36,5 +36,5 @@ const addRole = () => {
         });
 };
 
-module.exports = { getRole, addRole, deptArr };
+module.exports = { getRole, addRole};
 const rolePrompt = require('../lib/roles.js');

@@ -1,16 +1,12 @@
 const inquirer = require('inquirer');
-const roleArr = [];
-const managerArr = [];
 
-const getEmployees = () => {
+
+const getEmployee = () => {
     const sql = `SELECT e1.id as ID, CONCAT(e1.first_name, ' ', e1.last_name) as 'Employee Name', 
         department.name AS Department, roles.title as Title, roles.salary as Salary, 
-        CONCAT(e2.first_name, ' ', e2.last_name) AS Manager
-        FROM employee AS e1 INNER JOIN roles ON e1.role_id = roles.id
-        INNER JOIN department ON department.id = roles.department_id
-        LEFT JOIN employee AS e2 ON e1.manager_id = e2.id`
+        `
         
-    dbQuery(sql, false, false, true);
+    dbQuery(sql, false);
 };
 
 const addEmployee = () => {
@@ -62,7 +58,7 @@ const addEmployee = () => {
         });
 };
 
-module.exports = { getEmployees, addEmployee, roleArr, managerArr };
+module.exports = { getEmployee, addEmployee };
 
 const { promptUser } = require('../index.js');
 const { connection, dbQuery } = require('./index.js')
